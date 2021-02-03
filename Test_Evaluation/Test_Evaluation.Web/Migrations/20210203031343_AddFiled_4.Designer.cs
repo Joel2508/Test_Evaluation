@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Test_Evaluation.Web.Data;
 
 namespace Test_Evaluation.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210203031343_AddFiled_4")]
+    partial class AddFiled_4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,9 @@ namespace Test_Evaluation.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EntityUsuarioUsuario");
-
                     b.Property<string>("Nombre");
 
                     b.HasKey("Cargo");
-
-                    b.HasIndex("EntityUsuarioUsuario");
 
                     b.ToTable("EntityCargos");
                 });
@@ -42,13 +40,9 @@ namespace Test_Evaluation.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EntityUsuarioUsuario");
-
                     b.Property<string>("Nombre");
 
                     b.HasKey("Codigo");
-
-                    b.HasIndex("EntityUsuarioUsuario");
 
                     b.ToTable("EntityDepartamentos");
                 });
@@ -61,7 +55,11 @@ namespace Test_Evaluation.Web.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<int?>("CargosCargo");
+
                     b.Property<string>("Cedula");
+
+                    b.Property<int?>("DepartamentosCodigo");
 
                     b.Property<string>("FechaNacimiento");
 
@@ -69,21 +67,22 @@ namespace Test_Evaluation.Web.Migrations
 
                     b.HasKey("Usuario");
 
+                    b.HasIndex("CargosCargo");
+
+                    b.HasIndex("DepartamentosCodigo");
+
                     b.ToTable("EntityUsuarios");
                 });
 
-            modelBuilder.Entity("Test_Evaluation.Common.Entities.EntityCargo", b =>
+            modelBuilder.Entity("Test_Evaluation.Common.Entities.EntityUsuario", b =>
                 {
-                    b.HasOne("Test_Evaluation.Common.Entities.EntityUsuario")
-                        .WithMany("Cargos")
-                        .HasForeignKey("EntityUsuarioUsuario");
-                });
+                    b.HasOne("Test_Evaluation.Common.Entities.EntityCargo", "Cargos")
+                        .WithMany("EntityUsuarios")
+                        .HasForeignKey("CargosCargo");
 
-            modelBuilder.Entity("Test_Evaluation.Common.Entities.EntityDepartamento", b =>
-                {
-                    b.HasOne("Test_Evaluation.Common.Entities.EntityUsuario")
-                        .WithMany("Departamentos")
-                        .HasForeignKey("EntityUsuarioUsuario");
+                    b.HasOne("Test_Evaluation.Common.Entities.EntityDepartamento", "Departamentos")
+                        .WithMany("EntityUsuarios")
+                        .HasForeignKey("DepartamentosCodigo");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,8 +16,10 @@ namespace Test_Evaluation.Common.Entities
     public string Apellido { get; set; }
     public string FechaNacimiento { get; set; }
 
-    public ICollection<EntityCargo> EntityCargos { get; set; }
+    [Display(Name = "Cargo")]
+    public IEnumerable<EntityCargo> Cargos { get; set; }
 
-    public ICollection<EntityDepartamento> EntityDepartamentos { get; set; }
+    [Display(Name = "Departamento")]
+    public IEnumerable<EntityDepartamento> Departamentos { get; set; }
   }
 }

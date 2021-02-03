@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Test_Evaluation.Common.Entities
@@ -6,6 +7,6 @@ namespace Test_Evaluation.Common.Entities
   {
     [Key]
     public int Codigo { get; set; }
-    public string Nombre { get; set; }
+    public string Nombre { get; set; }    
   }
 }

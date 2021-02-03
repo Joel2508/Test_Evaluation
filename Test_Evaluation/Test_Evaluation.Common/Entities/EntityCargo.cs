@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Test_Evaluation.Common.Entities
@@ -8,6 +9,6 @@ namespace Test_Evaluation.Common.Entities
     public int Cargo { get; set; }
 
     public string Nombre { get; set; }
-
+    
   }
 }

@@ -40,6 +40,9 @@ namespace Test_Evaluation.Web
       });
       services.AddScoped<ICargo, Cargo>();
       services.AddScoped<IDepartamento, Departamento>();
+      services.AddScoped<ICombo, Combo>();
+      services.AddScoped<IUsuario, Usuario>();
+      services.AddScoped<IConverte, Converte>();
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
 
